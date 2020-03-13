@@ -163,22 +163,10 @@ test:
           mode: :primary
         max_pool_size: 1
 
-# production:
-#     clients:
-#         default:
-#             uri: <%= ENV['MONGODB_URI'] %>
-#         options:
-#             skip_version_check: true
-#         safe: true
-
 production:
-  clients:
-    default:
-      database: filomobileapi
-      hosts:
-        - localhost:27017
-      options:
-        read:
-          mode: primary
-        max_pool_size: 1
-
+    clients:
+        default:
+            uri: <%= ENV['MONGOLAB_JADE_URI'] %>
+        options:
+            skip_version_check: true
+        safe: true
