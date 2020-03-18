@@ -9,7 +9,7 @@ class OperationsController < ApplicationController
   def create
     begin
       @operation.save
-      @operations = Operation.where(employee: @operation.employee)
+      set_operations
       render json: @operations, status: :ok
     rescue => exception
       render json: {message: exception.message}, status: 500
@@ -18,7 +18,7 @@ class OperationsController < ApplicationController
 
   protected
   def set_operations
-    @operations = Operation.where(employee: params[:employee])
+    @operations = Operation.today.where(employee: params[:employee])
   end
 
   def set_operation
