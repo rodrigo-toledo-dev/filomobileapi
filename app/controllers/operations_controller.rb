@@ -26,6 +26,6 @@ class OperationsController < ApplicationController
   end
 
   def set_operation
-    @operation = Operation.find_or_initialize_by(params[:operation], params[:employee])
+    @operation = Operation.today.where(operation: params[:operation], employee: params[:employee]).first_or_initialize
   end
 end
