@@ -16,6 +16,10 @@ class OperationsController < ApplicationController
     end
   end
 
+  def next_actions_for
+    render json: Operation.next_actions_for(params[:employee]), status: :ok
+  end
+
   protected
   def set_operations
     @operations = Operation.today.where(employee: params[:employee])
