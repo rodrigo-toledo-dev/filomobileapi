@@ -22,6 +22,6 @@ class OperationsController < ApplicationController
   end
 
   def set_operation
-    @operation = Operation.new(operation: params[:operation], employee: params[:employee]) if params[:operation]
+    @operation = Operation.find_or_initialize_by(params[:operation], params[:employee])
   end
 end
